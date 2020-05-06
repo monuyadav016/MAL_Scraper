@@ -26,6 +26,7 @@ ROBOTSTXT_OBEY = True
 LOG_LEVEL = 'INFO'
 
 ANIME_ID_FILE = "anime_ids.json"
+API_URL = "https://api.jikan.moe/v3/anime/"
 
 # Feed settings for creating the output file
 # FEEDS: {

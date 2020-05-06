@@ -2,7 +2,7 @@ import scrapy
 import json
 from ..items import AnimeStatsItem
 import os
-from ..settings import ANIME_ID_FILE
+from ..settings import ANIME_ID_FILE, API_URL
 
 class AnimeStatsSpider(scrapy.Spider):
     name = "anime_stats"
@@ -21,7 +21,7 @@ class AnimeStatsSpider(scrapy.Spider):
         with open(location, "r") as id_file:
             anime_objs = json.load(id_file)
         for anime_obj in anime_objs:
-            url = "https://api.jikan.moe/v3/anime/{0}/stats".format(anime_obj["mal_id"])
+            url = "{0}{1}/stats".format(API_URL, anime_obj["mal_id"])
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
