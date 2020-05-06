@@ -1,0 +1,1 @@
+A python script to scrap anime details from myanimelist and store it in mongodb database. Requires mongodb for storing the scraped content.
