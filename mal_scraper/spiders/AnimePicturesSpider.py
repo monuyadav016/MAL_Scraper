@@ -29,5 +29,5 @@ class AnimePicturesSpider(scrapy.Spider):
         item = AnimePicturesItem()
         if response.status == 200:
             item["json_response"] = json.loads(response.text)
-            item["json_response"]["mal_id"] = response.url.split("/")[-2]
+            item["json_response"]["mal_id"] = int(response.url.split("/")[-2])
             yield item

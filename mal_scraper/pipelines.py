@@ -22,7 +22,7 @@ class AnimeDetailsPipeline():
 
     def process_item(self, item, spider):
         item = item["json_response"]
-        item["_id"] = item["mal_id"]
+        item["_id"] = int(item["mal_id"])
         try:
             self.collection.insert_one(item)
             # print(item.keys())
@@ -41,7 +41,7 @@ class AnimeCharactersStaffPipeline():
     
     def process_item(self, item, spider):
         item = item["json_response"]
-        item["_id"] = item["mal_id"]
+        item["_id"] = int(item["mal_id"])
         try:
             self.collection.insert_one(item)
         except pymongo.errors.DuplicateKeyError as e:
@@ -59,7 +59,7 @@ class AnimeStatsPipeline():
     
     def process_item(self, item, spider):
         item = item["json_response"]
-        item["_id"] = item["mal_id"]
+        item["_id"] = int(item["mal_id"])
         try:
             self.collection.insert_one(item)
             # print(item.keys())
@@ -78,7 +78,7 @@ class AnimePicturesPipeline():
     
     def process_item(self, item, spider):
         item = item["json_response"]
-        item["_id"] = item["mal_id"]
+        item["_id"] = int(item["mal_id"])
         try:
             self.collection.insert_one(item)
             # print(item.keys())

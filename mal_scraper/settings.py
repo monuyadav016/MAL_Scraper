@@ -21,12 +21,14 @@ USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+LOG_STDOUT = True
+LOG_FILE = '/tmp/scrapy_output.txt'
 
 # Log level
 LOG_LEVEL = 'INFO'
 
 ANIME_ID_FILE = "anime_ids.json"
-API_URL = "https://api.jikan.moe/v3/anime/"
+API_URL = "https://api.jikan.moe/v3/anime/"    # http://localhost:8080/v3/anime/
 DB_NAME = "mal_db"
 
 # Retry many times since proxies often fail
