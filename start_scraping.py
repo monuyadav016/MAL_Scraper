@@ -15,7 +15,7 @@ if __name__ == '__main__':
     
     @defer.inlineCallbacks
     def crawl():
-        yield runner.crawl(AnimeIdSpider)
+        # yield runner.crawl(AnimeIdSpider)
         yield runner.crawl(AnimeDetailsSpider)
         yield runner.crawl(AnimeCharactersStaffSpider)
         yield runner.crawl(AnimeStatsSpider)

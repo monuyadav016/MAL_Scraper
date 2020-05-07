@@ -27,6 +27,19 @@ LOG_LEVEL = 'INFO'
 
 ANIME_ID_FILE = "anime_ids.json"
 API_URL = "https://api.jikan.moe/v3/anime/"
+DB_NAME = "mal_db"
+
+# Retry many times since proxies often fail
+RETRY_TIMES = 10
+# Retry on most error codes since proxies fail for different reasons
+RETRY_HTTP_CODES = [500, 502, 503, 400, 403, 404, 408]
+# Some proxy generate redirects of other errors, this codes invalidate
+# the proxy and is mapped as a RETRY_HTTP_CODE 500
+SMART_PROXY_ERROR_CODES = [301, 302, 504]
+
+# AutoThrottle
+AUTOTHROTTLE_ENABLED = True
+DOWNLOAD_DELAY = 1
 
 # Feed settings for creating the output file
 # FEEDS: {

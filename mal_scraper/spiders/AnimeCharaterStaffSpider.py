@@ -2,10 +2,12 @@ import scrapy
 import json
 from ..items import AnimeCharactersStaffItem
 import os
-from ..settings import ANIME_ID_FILE, API_URL
+from ..settings import ANIME_ID_FILE, API_URL, DB_NAME
+from ..helper.helper import get_remaining_id_list
 
 class AnimeCharactersStaffSpider(scrapy.Spider):
     name = "anime_characters_staff"
+    collection_name = "anime_characters_staff"
 
     custom_settings = {
         'ITEM_PIPELINES': {
@@ -18,8 +20,7 @@ class AnimeCharactersStaffSpider(scrapy.Spider):
             location = ANIME_ID_FILE
         else:
             location = os.path.join("/home/monu/Desktop/Projects/MAL_Scraper/mal_scrapy/mal_scraper", "anime_ids.json")
-        with open(location, "r") as id_file:
-            anime_objs = json.load(id_file)
+        anime_objs = get_remaining_id_list(DB_NAME, AnimeCharactersStaffSpider.collection_name, location)
         for anime_obj in anime_objs:
             url = "{0}{1}/characters_staff".format(API_URL, anime_obj["mal_id"])
             yield scrapy.Request(url=url, callback=self.parse)
