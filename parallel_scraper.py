@@ -9,7 +9,7 @@ from mal_scraper.spiders.AnimePicturesSpider import AnimePicturesSpider
 
 def main():
 	process = CrawlerProcess(settings=get_project_settings())
-	# process.crawl(AnimeDetailsSpider)
+	process.crawl(AnimeDetailsSpider)
 	process.crawl(AnimeCharactersStaffSpider)
 	process.crawl(AnimeStatsSpider)
 	process.crawl(AnimePicturesSpider)
